@@ -22,9 +22,17 @@ export default class TaskList extends Component {
     constructor(props, context) {
         super(props, context);
 
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+        });
         this.state = {
-
+            dataSource: ds.cloneWithRows(props.todos),
         };
+    }
+    renderRow(todo) {
+        return (
+          <Text>{todo.task}</Text>
+        );
     }
     render() {
         return (
@@ -32,7 +40,8 @@ export default class TaskList extends Component {
         <Text> This is tasklist</Text>
         <ListView
             dataSource={this.state.dataSource}
-
+            key={this.props.todos}
+            renderRow = {this.renderRow.bind(this)}
         />
         </View>
       );
@@ -40,6 +49,10 @@ export default class TaskList extends Component {
 
 
 }
+
+TaskList.propTypes = {
+    todos: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+};
 
 
 module.exports = TaskList;

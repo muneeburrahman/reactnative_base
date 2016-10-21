@@ -40,6 +40,21 @@
         "react/sort-comp": 1,
         "react/wrap-multilines": 1,
         "id-length": 0,
+        'class-methods-use-this': ['error', {
+       exceptMethods: [
+         'render',
+         'renderRow',
+         'getInitialState',
+         'getDefaultProps',
+         'componentWillMount',
+         'componentDidMount',
+         'componentWillReceiveProps',
+         'shouldComponentUpdate',
+         'componentWillUpdate',
+         'componentDidUpdate',
+         'componentWillUnmount',
+       ],
+    }],
     },
     "parserOptions": {
       "ecmaFeatures": {
